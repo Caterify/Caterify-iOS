@@ -22,3 +22,7 @@ class Menu: Codable {
         self.description = description
     }
 }
+
+struct MenuPostResonse: Codable {
+    var menu: Menu?
+}

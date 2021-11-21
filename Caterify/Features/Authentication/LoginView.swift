@@ -81,7 +81,7 @@ struct LoginView: View {
                 .navigationBarTitleDisplayMode(.inline)
             }
             .onTapGesture {
-                isShowingDatePicker.toggle()
+                endTextEditing()
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .padding(.horizontal,16)

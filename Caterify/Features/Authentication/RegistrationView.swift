@@ -94,7 +94,7 @@ struct RegistrationView: View {
             }
             .padding(.top,16)
             .onTapGesture {
-                isShowingDatePicker.toggle()
+                endTextEditing()
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationTitle("Register")

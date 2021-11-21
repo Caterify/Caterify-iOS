@@ -18,8 +18,8 @@ struct ScheduleMenuView: View {
             VStack(){
                 DatePicker("Select Date", selection: $date, displayedComponents: .date)
                     .datePickerStyle(.graphical)
-                    .onChange(of: viewModel.date) { newValue in
-                        viewModel.getActiveOrder()
+                    .onChange(of: date) { newValue in
+                        viewModel.getActiveOrder(date: date)
                     }
                     
                 HStack{
@@ -29,7 +29,7 @@ struct ScheduleMenuView: View {
                 }
                 ScrollView{
                     if let menu = viewModel.menu {
-                        MenuInfo(date: viewModel.date.toString(), price: viewModel.price, menu: menu)
+                        MenuInfo(date: date.toString(), price: viewModel.price, menu: menu)
                     } else {
                         Text("No menu on this date")
                     }

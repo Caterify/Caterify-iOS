@@ -59,7 +59,7 @@ struct OwnerView: View {
             .navigationTitle("Caterify")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $isAddingMenu) {
-                CreateMenuView(isPresented: $isAddingMenu, date: $date)
+                CreateMenuView(date: $date, isPresented: $isAddingMenu)
             }
         }
     }

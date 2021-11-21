@@ -15,7 +15,7 @@ enum OrderStatus: Int, CaseIterable  {
 
 enum CateringOrderStatus: Int, CaseIterable {
     case progress = 1
-    case complated = 2
+    case completed = 2
 }
 
 struct CustomerSubscriptionView: View {

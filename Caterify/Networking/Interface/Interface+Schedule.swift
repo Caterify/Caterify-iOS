@@ -13,12 +13,18 @@ import SwiftUI
 protocol ScheduleInterface: Service {
     func getScheduleInRange(id: Int, start: String, end: String) -> AnyPublisher<CABaseResponse<RangedScheduleBaseResponse>, CABaseErrorModel>
     func getScheduleOfCatering(date: String) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel>
+    func getAllPrivateSchedules() -> AnyPublisher<CABaseResponse<SchedulesBaseResponse>, CABaseErrorModel>
+    func changeStatus(scheduleId: Int, status: Int) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel>
+    func createSchedule(date: String, price: Int, menu_id: Int) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel>
 }
 
 // Schedule Request Enum
 enum ScheduleDescription {
     case getScheduleInRange(id: Int, start: String, end: String)
     case getScheduleOfCatering(date: String)
+    case getAllPrivateSchedules
+    case changeStatus(scheduleId: Int, status: Int)
+    case createSchedule(date: String, price: Int, menu_id: Int)
 }
 
 extension ScheduleDescription: NetworkDescription {
@@ -28,11 +34,19 @@ extension ScheduleDescription: NetworkDescription {
             return "/api/public/schedules/catering/\(id)/range"
         case .getScheduleOfCatering:
             return "/api/private/schedules/date"
+        case .getAllPrivateSchedules, .createSchedule:
+            return "/api/private/schedules"
+        case .changeStatus(let scheduleId, _):
+            return "/api/private/schedules/\(scheduleId)/change-status"
         }
     }
     
     var method: HTTPMethod {
         switch self {
+        case .changeStatus:
+            return .PATCH
+        case .createSchedule:
+            return .POST
         default:
             return .GET
         }
@@ -50,6 +64,23 @@ extension ScheduleDescription: NetworkDescription {
             return [
                 "api_key": Constants.ServerEnvironment.apiKey,
                 "date": date
+            ]
+        case .getAllPrivateSchedules:
+            return [
+                "api_key": Constants.ServerEnvironment.apiKey
+            ]
+        case .changeStatus(_, let status):
+            return [
+                "api_key": Constants.ServerEnvironment.apiKey,
+                "status": String(status)
+            ]
+
+        case .createSchedule(let date, let price, let menu_id):
+            return [
+                "api_key": Constants.ServerEnvironment.apiKey,
+                "date": date,
+                "price": String(price),
+                "menu_id": String(menu_id)
             ]
         }
     }
