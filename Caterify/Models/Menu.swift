@@ -15,4 +15,10 @@ class Menu: Codable {
     var user: User?
     
     var schedules: [Schedule]?
+    
+    init(id: Int, name: String, description: String) {
+        self.id = id
+        self.name = name
+        self.description = description
+    }
 }

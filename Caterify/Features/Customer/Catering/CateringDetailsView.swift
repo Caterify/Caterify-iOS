@@ -207,6 +207,7 @@ struct MenuInfo: View {
                     .foregroundColor(.main)
                     .bold()
             }
+            Spacer()
         }
     }
 }
