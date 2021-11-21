@@ -18,7 +18,13 @@ struct OrderView: View {
             ScrollView(){
                 LazyVStack(spacing: 0){
                     if viewModel.selected == .progress {
-                        ForEach(viewModel.schedules.filter {$0.orders!.first!.status! < 2}.sorted { $0.date!.toDate()! > $1.date!.toDate()! }, id:\.id) { schedule in
+                        ForEach(viewModel.schedules.filter {
+                            if let status = $0.orders?.first?.status {
+                                return status < 2
+                            } else {
+                                return true
+                            }
+                        }.sorted { $0.date!.toDate()! > $1.date!.toDate()! }, id:\.id) { schedule in
                             CateringOrderCard(schedule, viewModel)
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 8)
@@ -136,10 +142,10 @@ struct CateringOrderCard: View {
                 VStack(alignment: .leading){
                     Text(schedule.menu!.name!)
                     Text(schedule.date!.toDate()!.toString(withFormat: "dd MMM yyyy"))
-                        .font(.callout)
+                        .font(.caption)
                 }
                 Spacer()
-                Text(Constants.OrderStatus[schedule.orders!.first!.status!])
+                Text(Constants.OrderStatus[schedule.orders?.first?.status ?? 0])
             }
             HStack{
                 Text("Total order: \(schedule.orders!.count)")
@@ -151,7 +157,7 @@ struct CateringOrderCard: View {
                     .font(.caption)
                     .foregroundColor(Color.main)
             }
-            if schedule.orders!.first!.status! == 1{
+            if schedule.orders!.first?.status ?? 0 == 1{
                 NavigationLink{
                     RequestPickupView()
                         .onAppear {

@@ -13,11 +13,22 @@ struct ImagePickerButton: View {
     
     var body: some View {
         ZStack {
-            Image(uiImage: UIImage(systemName: "photo.on.rectangle.angled")!).renderingMode(.template).foregroundColor(.main)
-                .frame(maxWidth: .infinity, minHeight: 100, idealHeight: 100, maxHeight: 100)
-                .background(.ultraThinMaterial)
-                .cornerRadius(6)
-                .clipped()
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity, minHeight: 100, idealHeight: 100, maxHeight: 100)
+                    .cornerRadius(6)
+                    .clipped()
+            } else {
+                Image(uiImage: UIImage(systemName: "photo.on.rectangle.angled")!)
+                    .renderingMode(.template)
+                    .foregroundColor(.main)
+                    .frame(maxWidth: .infinity, minHeight: 100, idealHeight: 100, maxHeight: 100)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(6)
+                    .clipped()
+            }
         }
     }
 }

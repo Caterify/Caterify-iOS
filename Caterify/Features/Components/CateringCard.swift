@@ -68,29 +68,33 @@ struct CateringCard: View {
                 }
             }
         case .small:
-            HStack {
-                Group {
-                    AsyncImage(url: imageURL) { phase in
-                        if let image = phase.image {
-                            image
-                                .resizable()
-                        } else {
-                            Image("Dummy Food")
-                                .resizable()
+            Button {
+                isPresentingSheet.toggle()
+            } label: {
+                HStack {
+                    Group {
+                        AsyncImage(url: imageURL) { phase in
+                            if let image = phase.image {
+                                image
+                                    .resizable()
+                            } else {
+                                Image("Dummy Food")
+                                    .resizable()
+                            }
                         }
                     }
+                    .scaledToFill()
+                    .frame(width: 80)
+                    .clipped()
+                    CateringCardInfo(name: name, range: distance, price: averagePrice)
                 }
-                .scaledToFill()
-                .frame(width: 80)
-                .clipped()
-                CateringCardInfo(name: name, range: distance, price: averagePrice)
-            }
-            .frame(height: 80)
-            .background(.background)
-            .cornerRadius(6)
-            .fullScreenCover(isPresented: $isPresentingSheet) {
-                NavigationView {
-                    CateringDetailsView(catering, isPresented: $isPresentingSheet)
+                .frame(height: 80)
+                .background(.background)
+                .cornerRadius(6)
+                .fullScreenCover(isPresented: $isPresentingSheet) {
+                    NavigationView {
+                        CateringDetailsView(catering, isPresented: $isPresentingSheet)
+                    }
                 }
             }
         }

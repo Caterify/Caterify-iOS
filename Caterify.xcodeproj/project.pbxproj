@@ -765,10 +765,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Caterify/Preview Content\"";
-				DEVELOPMENT_TEAM = 78G9R9V4K7;
+				DEVELOPMENT_TEAM = 7BXMQ2C5C2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Caterify/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Caterify needs to have camera permission to take a picture!";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Caterify needs to have location access to set your address!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -797,10 +798,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Caterify/Preview Content\"";
-				DEVELOPMENT_TEAM = 78G9R9V4K7;
+				DEVELOPMENT_TEAM = 7BXMQ2C5C2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Caterify/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Caterify needs to have camera permission to take a picture!";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Caterify needs to have location access to set your address!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -13,6 +13,7 @@ struct CreateMenuView: View {
     @Binding var isPresented: Bool
     @Binding var date: Date
     @State var isShowingDatePicker: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     init(date: Binding<Date>, isPresented: Binding<Bool>) {
         self.viewModel = CreateMenuViewModel(date: date)
@@ -38,12 +39,22 @@ struct CreateMenuView: View {
                                             viewModel.isShowingImagePicker = true
                                         },
                                         .default(Text("Take a picture")){
-                                            viewModel.sourceType = .camera
-                                            viewModel.isShowingImagePicker = true
+                                            viewModel.requestCameraAccess()
                                         },
                                         .cancel()
                                     ])
                     }
+                    .alert("Camera Access Required", isPresented: $viewModel.isShowingCameraAlert, actions: {
+                        Button("Go Back", role: .cancel) {
+                            self.dismiss()
+                        }
+                        Button("Settings") {
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                            self.dismiss()
+                        }
+                    }, message: {
+                        Text("You can enable Camera Permission in Privacy Settings")
+                    })
                     .sheet(isPresented: $viewModel.isShowingImagePicker, content: {
                         ImagePicker(isPresented: $viewModel.isShowingImagePicker, selectedImage: $viewModel.image, sourceType: viewModel.sourceType)
                     })
@@ -70,15 +81,15 @@ struct CreateMenuView: View {
                                         .padding(14)
                                     Spacer()
                                 }
+                                .onTapGesture {
+                                    isShowingDatePicker.toggle()
+                                }
                             } else {
                                 DatePicker("Menu Date", selection: $date, displayedComponents: .date)
                                     .labelsHidden()
                                     .id(date)
                                     .datePickerStyle(WheelDatePickerStyle())
                             }
-                        }
-                        .onTapGesture {
-                            isShowingDatePicker.toggle()
                         }
                         .background(
                             RoundedRectangle(cornerRadius: 6)
@@ -95,7 +106,9 @@ struct CreateMenuView: View {
                 Spacer()
                 Button {
                     print("Submit Menu")
-                    viewModel.createMenu()
+                    viewModel.createMenu() {
+                        self.dismiss()
+                    }
                 } label: {
                     Text("Submit Menu")
                         .padding(8)
@@ -107,10 +120,10 @@ struct CreateMenuView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(viewModel.name.isEmpty ||
                           viewModel.description.isEmpty ||
-                          viewModel.price != 0)
+                          viewModel.price == 0)
             }
             .onTapGesture {
-                isShowingDatePicker.toggle()
+                endTextEditing()
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .onTapGesture(perform: {

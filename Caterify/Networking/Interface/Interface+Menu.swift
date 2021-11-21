@@ -34,7 +34,7 @@ extension MenuDescription: NetworkDescription {
         }
     }
     
-    var body: [String : Any]? {
+    var queryParams: [String : String]? {
         switch self {
         case .createMenu(let name, let description):
             return [
