@@ -16,6 +16,11 @@ struct ScheduleRequest: Service {
 
 // Schedule Request function
 extension ScheduleRequest: ScheduleInterface {
+    func createSchedule(date: String, price: Int, menu_id: Int) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel> {
+        let call = Connector<Network, CABaseResponse<ScheduleBaseResponse>>()
+        return call.doConnect(request: Network.createSchedule(date: date, price: price, menu_id: menu_id), baseUrl: baseUrl)
+    }
+    
     func changeStatus(scheduleId: Int, status: Int) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel> {
         let call = Connector<Network, CABaseResponse<ScheduleBaseResponse>>()
         return call.doConnect(request: Network.changeStatus(scheduleId: scheduleId, status: status), baseUrl: baseUrl)

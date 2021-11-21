@@ -19,10 +19,10 @@ final class ScheduleMenuViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init() {
-        getActiveOrder()
+        getActiveOrder(date: Date())
     }
     
-    func getActiveOrder() {
+    func getActiveOrder(date: Date) {
         isDoneLoading = false
         scheduleRequest.getScheduleOfCatering(date: date.toString(withFormat: "yyyy-MM-dd"))
             .receive(on: DispatchQueue.main, options: nil)

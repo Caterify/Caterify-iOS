@@ -15,6 +15,7 @@ protocol ScheduleInterface: Service {
     func getScheduleOfCatering(date: String) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel>
     func getAllPrivateSchedules() -> AnyPublisher<CABaseResponse<SchedulesBaseResponse>, CABaseErrorModel>
     func changeStatus(scheduleId: Int, status: Int) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel>
+    func createSchedule(date: String, price: Int, menu_id: Int) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel>
 }
 
 // Schedule Request Enum
@@ -23,6 +24,7 @@ enum ScheduleDescription {
     case getScheduleOfCatering(date: String)
     case getAllPrivateSchedules
     case changeStatus(scheduleId: Int, status: Int)
+    case createSchedule(date: String, price: Int, menu_id: Int)
 }
 
 extension ScheduleDescription: NetworkDescription {
@@ -32,7 +34,7 @@ extension ScheduleDescription: NetworkDescription {
             return "/api/public/schedules/catering/\(id)/range"
         case .getScheduleOfCatering:
             return "/api/private/schedules/date"
-        case .getAllPrivateSchedules:
+        case .getAllPrivateSchedules, .createSchedule:
             return "/api/private/schedules"
         case .changeStatus(let scheduleId, _):
             return "/api/private/schedules/\(scheduleId)/change-status"
@@ -43,6 +45,8 @@ extension ScheduleDescription: NetworkDescription {
         switch self {
         case .changeStatus:
             return .PATCH
+        case .createSchedule:
+            return .POST
         default:
             return .GET
         }
@@ -71,6 +75,13 @@ extension ScheduleDescription: NetworkDescription {
                 "status": String(status)
             ]
 
+        case .createSchedule(let date, let price, let menu_id):
+            return [
+                "api_key": Constants.ServerEnvironment.apiKey,
+                "date": date,
+                "price": String(price),
+                "menu_id": String(menu_id)
+            ]
         }
     }
     

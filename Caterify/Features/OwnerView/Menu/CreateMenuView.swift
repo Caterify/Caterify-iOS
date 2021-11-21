@@ -9,10 +9,16 @@ import SwiftUI
 
 struct CreateMenuView: View {
     
-    @StateObject private var viewModel = CreateMenuViewModel()
+    @ObservedObject private var viewModel: CreateMenuViewModel
     @Binding var isPresented: Bool
     @Binding var date: Date
     @State var isShowingDatePicker: Bool = false
+    
+    init(date: Binding<Date>, isPresented: Binding<Bool>) {
+        self.viewModel = CreateMenuViewModel(date: date)
+        self._isPresented = isPresented
+        self._date = date
+    }
     
     var body: some View {
         NavigationView {
@@ -89,6 +95,7 @@ struct CreateMenuView: View {
                 Spacer()
                 Button {
                     print("Submit Menu")
+                    viewModel.createMenu()
                 } label: {
                     Text("Submit Menu")
                         .padding(8)
@@ -132,6 +139,6 @@ struct CreateMenuView: View {
 
 struct CreateMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateMenuView(isPresented: .constant(true), date: .constant(Date()))
+        CreateMenuView(date: .constant(Date()), isPresented: .constant(false))
     }
 }
