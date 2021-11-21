@@ -17,21 +17,21 @@ struct ScheduleMenuView: View {
             VStack(){
                 DatePicker("Select Date", selection: $viewModel.date, displayedComponents: .date)
                     .datePickerStyle(.graphical)
+                    .onChange(of: viewModel.date) { newValue in
+                        viewModel.getActiveOrder()
+                    }
                     
                 HStack{
                     Text("Today Menu")
-                        //.fontWeight(.bold)
                     Spacer()
-                    NavigationLink {
-                        
-                    } label: {
-                        Text("View all menu >")
-                            .font(.caption)
-                            .foregroundColor(Color.grey)
-                    }
+                        //.fontWeight(.bold)
                 }
                 ScrollView{
-                    MenuInfo(date: viewModel.date.toString(), price: viewModel.price, menu: Menu(id: 123, name: "Food Name", description: "This is Dummy Menu"))
+                    if let menu = viewModel.menu {
+                        MenuInfo(date: viewModel.date.toString(), price: viewModel.price, menu: menu)
+                    } else {
+                        Text("No menu on this date")
+                    }
                 }.padding(.vertical, 16)
                 .disabled(true)
                 

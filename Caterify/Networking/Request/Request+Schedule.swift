@@ -20,4 +20,9 @@ extension ScheduleRequest: ScheduleInterface {
         let call = Connector<Network, CABaseResponse<RangedScheduleBaseResponse>>()
         return call.doConnect(request: Network.getScheduleInRange(id: id, start: start, end: end), baseUrl: baseUrl)
     }
+    
+    func getScheduleOfCatering(date: String) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel> {
+        let call = Connector<Network, CABaseResponse<ScheduleBaseResponse>>()
+        return call.doConnect(request: Network.getScheduleOfCatering(date: date), baseUrl: baseUrl)
+    }
 }

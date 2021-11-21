@@ -45,6 +45,31 @@ struct LoginView: View {
                             .foregroundColor(Color.main)
                     }
                 }
+                Divider()
+                HStack{
+                    Text("ONLY FOR TESTING")
+                        .font(.caption)
+                    Button {
+                        viewModel.email = "radika03@example.org"
+                        viewModel.password = "admin123"
+                    } label: {
+                        Text("Dummy Customer Account")
+                            .font(.caption)
+                            .foregroundColor(Color.main)
+                    }
+                }
+                HStack{
+                    Text("ONLY FOR TESTING")
+                        .font(.caption)
+                    Button {
+                        viewModel.email = "jasmin22@example.net"
+                        viewModel.password = "admin123"
+                    } label: {
+                        Text("Dummy Catering Account")
+                            .font(.caption)
+                            .foregroundColor(Color.main)
+                    }
+                }
                 Spacer()
                 Button {
                     side = "customer"
@@ -54,7 +79,6 @@ struct LoginView: View {
                 }
                 .navigationTitle("Login")
                 .navigationBarTitleDisplayMode(.inline)
-
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .padding(.horizontal,16)

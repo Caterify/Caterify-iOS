@@ -10,12 +10,13 @@ import SwiftUI
 struct CustomForm: View {
     
     enum FormType {
-        case normal, secure, numeric
+        case normal, secure, numeric, price
     }
     
     let placeholder:String
     let title:String
     let type: FormType
+    @State var someNumber = 0
     @Binding var field: String
     @Binding var isError: Bool
     @Binding var errorDescription: String
@@ -101,6 +102,34 @@ struct CustomForm: View {
                         .foregroundColor(.red)
                 }
             }
+        case .price:
+            VStack(alignment: .leading, spacing: 8){
+                Text(title)
+                    .font(.caption)
+                TextField(placeholder, text: $field)
+                    .keyboardType(.numberPad)
+                    .padding(14)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(.ultraThinMaterial)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(isError ? .red : Color.ultraLightGrey)
+                    )
+                    .contentShape(Rectangle())
+                    .onChange(of: $field.wrappedValue) { newValue in
+                        if isError {
+                            isError = false
+                        }
+                    }
+                if isError{
+                    Text(errorDescription)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                }
+            }
         }
+        
     }
 }
