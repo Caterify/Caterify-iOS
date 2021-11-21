@@ -15,6 +15,6 @@ struct Constants {
     struct ServerEnvironment {
         static let apiKey = "supersecretkey"
     }
-    static let OrderStatus = ["Received","In Progress","Completed"]
+    static let OrderStatus = ["Upcoming","In Progress","Completed"]
 }
 

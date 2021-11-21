@@ -13,6 +13,7 @@ class Schedule: Codable {
     var price: Int?
     
     var menu: Menu?
+    var orders: [Order]?
     
     func dateToString() -> String {
         return date!.toDate()!.toString()
@@ -33,4 +34,8 @@ struct RangedScheduleBaseResponse: Codable {
 
 struct ScheduleBaseResponse: Codable {
     var schedule: Schedule?
+}
+
+struct SchedulesBaseResponse: Codable {
+    var schedules: [Schedule]?
 }

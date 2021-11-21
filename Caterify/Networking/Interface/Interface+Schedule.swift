@@ -13,12 +13,16 @@ import SwiftUI
 protocol ScheduleInterface: Service {
     func getScheduleInRange(id: Int, start: String, end: String) -> AnyPublisher<CABaseResponse<RangedScheduleBaseResponse>, CABaseErrorModel>
     func getScheduleOfCatering(date: String) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel>
+    func getAllPrivateSchedules() -> AnyPublisher<CABaseResponse<SchedulesBaseResponse>, CABaseErrorModel>
+    func changeStatus(scheduleId: Int, status: Int) -> AnyPublisher<CABaseResponse<ScheduleBaseResponse>, CABaseErrorModel>
 }
 
 // Schedule Request Enum
 enum ScheduleDescription {
     case getScheduleInRange(id: Int, start: String, end: String)
     case getScheduleOfCatering(date: String)
+    case getAllPrivateSchedules
+    case changeStatus(scheduleId: Int, status: Int)
 }
 
 extension ScheduleDescription: NetworkDescription {
@@ -28,11 +32,17 @@ extension ScheduleDescription: NetworkDescription {
             return "/api/public/schedules/catering/\(id)/range"
         case .getScheduleOfCatering:
             return "/api/private/schedules/date"
+        case .getAllPrivateSchedules:
+            return "/api/private/schedules"
+        case .changeStatus(let scheduleId, _):
+            return "/api/private/schedules/\(scheduleId)/change-status"
         }
     }
     
     var method: HTTPMethod {
         switch self {
+        case .changeStatus:
+            return .PATCH
         default:
             return .GET
         }
@@ -51,6 +61,16 @@ extension ScheduleDescription: NetworkDescription {
                 "api_key": Constants.ServerEnvironment.apiKey,
                 "date": date
             ]
+        case .getAllPrivateSchedules:
+            return [
+                "api_key": Constants.ServerEnvironment.apiKey
+            ]
+        case .changeStatus(_, let status):
+            return [
+                "api_key": Constants.ServerEnvironment.apiKey,
+                "status": String(status)
+            ]
+
         }
     }
     

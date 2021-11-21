@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C490552274A520E0003EC8C /* RequestPickupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C490551274A520E0003EC8C /* RequestPickupView.swift */; };
 		0C7EE63E27455FC2007DDCA9 /* CaterifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7EE63D27455FC2007DDCA9 /* CaterifyApp.swift */; };
 		0C7EE64027455FC2007DDCA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7EE63F27455FC2007DDCA9 /* ContentView.swift */; };
 		0C7EE64227455FC4007DDCA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C7EE64127455FC4007DDCA9 /* Assets.xcassets */; };
@@ -52,8 +53,6 @@
 		7E15C1F627477A5600E173ED /* CateringDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15C1F527477A5600E173ED /* CateringDetailsView.swift */; };
 		7E15C1FA27477A8100E173ED /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15C1F927477A8100E173ED /* OrderViewModel.swift */; };
 		7E15C1FC27477A9400E173ED /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15C1FB27477A9400E173ED /* OrderView.swift */; };
-		7E15C20327477B0C00E173ED /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15C20227477B0C00E173ED /* OrderListViewModel.swift */; };
-		7E15C20527477B2000E173ED /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15C20427477B2000E173ED /* OrderListView.swift */; };
 		7E15C20727477E0500E173ED /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15C20627477E0500E173ED /* RegistrationViewModel.swift */; };
 		7E15C20927477FA900E173ED /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15C20827477FA900E173ED /* RegistrationView.swift */; };
 		7E15C20B27477FDA00E173ED /* CateringCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15C20A27477FDA00E173ED /* CateringCard.swift */; };
@@ -85,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		0261E3EE01FD6D8A367EB271 /* Pods_Caterify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Caterify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C490551274A520E0003EC8C /* RequestPickupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPickupView.swift; sourceTree = "<group>"; };
 		0C7EE63A27455FC2007DDCA9 /* Caterify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caterify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C7EE63D27455FC2007DDCA9 /* CaterifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaterifyApp.swift; sourceTree = "<group>"; };
 		0C7EE63F27455FC2007DDCA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,8 +132,6 @@
 		7E15C1F527477A5600E173ED /* CateringDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateringDetailsView.swift; sourceTree = "<group>"; };
 		7E15C1F927477A8100E173ED /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		7E15C1FB27477A9400E173ED /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
-		7E15C20227477B0C00E173ED /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
-		7E15C20427477B2000E173ED /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		7E15C20627477E0500E173ED /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		7E15C20827477FA900E173ED /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		7E15C20A27477FDA00E173ED /* CateringCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateringCard.swift; sourceTree = "<group>"; };
@@ -176,6 +174,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C490550274A52010003EC8C /* Pickup */ = {
+			isa = PBXGroup;
+			children = (
+				0C490551274A520E0003EC8C /* RequestPickupView.swift */,
+			);
+			path = Pickup;
+			sourceTree = "<group>";
+		};
 		0C7EE63127455FC2007DDCA9 = {
 			isa = PBXGroup;
 			children = (
@@ -348,7 +354,6 @@
 				B8032BBC2749791D00BF44E9 /* CustomerSubscriptionViewModel.swift */,
 				7EF710D72747ABF100F17C66 /* CustomerSubscriptionView.swift */,
 				7E15C1FF27477AC900E173ED /* Catering */,
-				7E15C1FE27477ABF00E173ED /* Order */,
 				B8A37A3C2746EF5C003B144E /* Payment */,
 			);
 			path = Customer;
@@ -357,10 +362,11 @@
 		7E15C1CF274775EA00E173ED /* OwnerView */ = {
 			isa = PBXGroup;
 			children = (
+				0C490550274A52010003EC8C /* Pickup */,
+				7E15C1FE27477ABF00E173ED /* Order */,
 				7E15C1D0274775F900E173ED /* OwnerView.swift */,
 				7E15C1D22747762200E173ED /* OwnerViewModel.swift */,
 				7E15C20027477ADA00E173ED /* Menu */,
-				7E15C20127477AFB00E173ED /* Order */,
 			);
 			path = OwnerView;
 			sourceTree = "<group>";
@@ -381,7 +387,8 @@
 				7E15C1FB27477A9400E173ED /* OrderView.swift */,
 				7E15C1F927477A8100E173ED /* OrderViewModel.swift */,
 			);
-			path = Order;
+			name = Order;
+			path = ../Customer/Order;
 			sourceTree = "<group>";
 		};
 		7E15C1FF27477AC900E173ED /* Catering */ = {
@@ -406,15 +413,6 @@
 				7E15C1EB274779BF00E173ED /* ScheduleMenuViewModel.swift */,
 			);
 			path = Menu;
-			sourceTree = "<group>";
-		};
-		7E15C20127477AFB00E173ED /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				7E15C20427477B2000E173ED /* OrderListView.swift */,
-				7E15C20227477B0C00E173ED /* OrderListViewModel.swift */,
-			);
-			path = Order;
 			sourceTree = "<group>";
 		};
 		7E99125A2746BDAF00F90212 /* AddressPicker */ = {
@@ -607,9 +605,8 @@
 				0CC863DD274937A800CB7BFC /* Request+Auth.swift in Sources */,
 				0C7EE65D2745640D007DDCA9 /* Connector.swift in Sources */,
 				0CC863D52748C99200CB7BFC /* Request+Schedule.swift in Sources */,
-				7E15C20327477B0C00E173ED /* OrderListViewModel.swift in Sources */,
 				0C7EE6632745674B007DDCA9 /* Interface+One.swift in Sources */,
-				7E15C20527477B2000E173ED /* OrderListView.swift in Sources */,
+				0C490552274A520E0003EC8C /* RequestPickupView.swift in Sources */,
 				7E15C1F227477A0D00E173ED /* CateringListViewModel.swift in Sources */,
 				7EF710DC2748A44700F17C66 /* Extension+TimeInterval.swift in Sources */,
 				0CF308652747E04E002350B3 /* Request+Catering.swift in Sources */,
@@ -760,7 +757,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Caterify/Preview Content\"";
-				DEVELOPMENT_TEAM = 7BXMQ2C5C2;
+				DEVELOPMENT_TEAM = 78G9R9V4K7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Caterify/Info.plist;
@@ -792,7 +789,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Caterify/Preview Content\"";
-				DEVELOPMENT_TEAM = 7BXMQ2C5C2;
+				DEVELOPMENT_TEAM = 78G9R9V4K7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Caterify/Info.plist;

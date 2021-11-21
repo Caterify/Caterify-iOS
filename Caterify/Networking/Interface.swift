@@ -19,6 +19,7 @@ public enum HTTPMethod: String {
     case POST
     case PUT
     case DELETE
+    case PATCH
 }
 
 // Request Protocol
