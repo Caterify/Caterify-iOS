@@ -33,22 +33,24 @@ struct CustomerSubscriptionView: View {
     
     var body: some View {
         VStack {
-            if loginToken.isEmpty {
-                HStack(spacing: 16) {
-                    Spacer()
-                    Button {
+            HStack(spacing: 16) {
+                Spacer()
+                Button {
+                    if loginToken.isEmpty {
                         side = "login"
-                    } label: {
-                        Text("Login")
+                    } else {
+                        loginToken = ""
+                        side = "login"
                     }
-                    Button {
-                        side = "register"
-                    } label: {
-                        Text("Register")
+                } label: {
+                    if loginToken.isEmpty {
+                        Text("Login")
+                    } else {
+                        Text("Logout")
                     }
                 }
-                .padding(.horizontal, 32)
             }
+            .padding(.horizontal, 32)
             CustomSegmentedControl(selected: $selectedSegment)
                 .padding(.horizontal, 16)
             ScrollView{

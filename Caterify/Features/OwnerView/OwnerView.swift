@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct OwnerView: View {
+    
     enum OwnerTab{
         case menu, order
     }
+    
     @StateObject var viewModel = OwnerViewModel()
     @State private var currentTab: OwnerTab = .menu
+    @State var isAddingMenu: Bool = false
+    
     var body: some View {
         NavigationView {
             TabView(selection: $currentTab) {
@@ -31,7 +35,7 @@ struct OwnerView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        
+                        isAddingMenu.toggle()
                     } label: {
                         Image(systemName: "plus")
                             .foregroundColor(Color.main)
@@ -39,6 +43,9 @@ struct OwnerView: View {
 
                 }
             })
+            .sheet(isPresented: $isAddingMenu) {
+                CreateMenuView(isPresented: $isAddingMenu)
+            }
         }
     }
     

@@ -15,9 +15,7 @@ struct ContentView: View {
     var body: some View {
         switch side {
         case "owner":
-            VStack {
-                Text("Owner Side")
-            }
+            OwnerView()
         case "customer":
             CustomerView()
         case "login":

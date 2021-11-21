@@ -73,6 +73,8 @@
 		7EF710E22748B21F00F17C66 /* Extension+NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF710E12748B21F00F17C66 /* Extension+NumberFormatter.swift */; };
 		7EF710E42748B34A00F17C66 /* Extension+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF710E32748B34A00F17C66 /* Extension+Int.swift */; };
 		7EF710E62748D67200F17C66 /* CateringCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF710E52748D67200F17C66 /* CateringCheckoutView.swift */; };
+		7EF710EB274A24AD00F17C66 /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF710EA274A24AD00F17C66 /* ImagePickerButton.swift */; };
+		7EF710ED274A26BD00F17C66 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF710EC274A26BD00F17C66 /* ImagePicker.swift */; };
 		B8032BB627490C4400BF44E9 /* CustomForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8032BB527490C4400BF44E9 /* CustomForm.swift */; };
 		B8032BB8274910E200BF44E9 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8032BB7274910E200BF44E9 /* Extension+String.swift */; };
 		B8032BBA27493D2200BF44E9 /* SelectRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8032BB927493D2200BF44E9 /* SelectRoleView.swift */; };
@@ -151,6 +153,8 @@
 		7EF710E12748B21F00F17C66 /* Extension+NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NumberFormatter.swift"; sourceTree = "<group>"; };
 		7EF710E32748B34A00F17C66 /* Extension+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Int.swift"; sourceTree = "<group>"; };
 		7EF710E52748D67200F17C66 /* CateringCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CateringCheckoutView.swift; sourceTree = "<group>"; };
+		7EF710EA274A24AD00F17C66 /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
+		7EF710EC274A26BD00F17C66 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		9DF7FC88795BC9C1EABF3FB1 /* Pods-Caterify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caterify.release.xcconfig"; path = "Target Support Files/Pods-Caterify/Pods-Caterify.release.xcconfig"; sourceTree = "<group>"; };
 		A93148F3FDFB1526CB95558B /* Pods-Caterify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Caterify.debug.xcconfig"; path = "Target Support Files/Pods-Caterify/Pods-Caterify.debug.xcconfig"; sourceTree = "<group>"; };
 		B8032BB527490C4400BF44E9 /* CustomForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomForm.swift; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				7E15C20E27478B2400E173ED /* HomeComponent.swift */,
 				7EF710D92747DEF500F17C66 /* CustomHeader.swift */,
 				B8032BB527490C4400BF44E9 /* CustomForm.swift */,
+				7EF710EA274A24AD00F17C66 /* ImagePickerButton.swift */,
+				7EF710EC274A26BD00F17C66 /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				7E15C1E4274777F600E173ED /* Address.swift in Sources */,
 				0C7EE63E27455FC2007DDCA9 /* CaterifyApp.swift in Sources */,
 				0CF1AA1C2746641700FE7C0A /* Catering.swift in Sources */,
+				7EF710ED274A26BD00F17C66 /* ImagePicker.swift in Sources */,
 				B8032BB627490C4400BF44E9 /* CustomForm.swift in Sources */,
 				7E15C1D32747762200E173ED /* OwnerViewModel.swift in Sources */,
 				0CC863D92749069E00CB7BFC /* Request+Order.swift in Sources */,
@@ -593,6 +600,7 @@
 				7E15C1D52747763E00E173ED /* CustomerViewModel.swift in Sources */,
 				0CC863D32748C6A300CB7BFC /* Interface+Schedule.swift in Sources */,
 				0CF1AA142746627000FE7C0A /* User.swift in Sources */,
+				7EF710EB274A24AD00F17C66 /* ImagePickerButton.swift in Sources */,
 				0CC863D72749024500CB7BFC /* Interface+Order.swift in Sources */,
 				0C7EE65F2745646F007DDCA9 /* CAGenericResponseModel.swift in Sources */,
 				7E15C1E62747798800E173ED /* CreateMenuView.swift in Sources */,
@@ -752,7 +760,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Caterify/Preview Content\"";
-				DEVELOPMENT_TEAM = 78G9R9V4K7;
+				DEVELOPMENT_TEAM = 7BXMQ2C5C2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Caterify/Info.plist;
@@ -784,7 +792,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Caterify/Preview Content\"";
-				DEVELOPMENT_TEAM = 78G9R9V4K7;
+				DEVELOPMENT_TEAM = 7BXMQ2C5C2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Caterify/Info.plist;
