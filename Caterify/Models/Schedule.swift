@@ -31,4 +31,6 @@ struct RangedScheduleBaseResponse: Codable {
     }
 }
 
-
+struct ScheduleBaseResponse: Codable {
+    var schedule: Schedule?
+}
