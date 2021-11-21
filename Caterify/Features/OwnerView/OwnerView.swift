@@ -12,7 +12,21 @@ struct OwnerView: View {
         case menu, order
     }
     @StateObject var viewModel = OwnerViewModel()
-    @State private var currentTab: OwnerTab = .menu
+    @State  var currentTab: OwnerTab = .menu
+    
+    init() {
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            tabBarAppearance.backgroundColor = UIColor.systemBackground
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             TabView(selection: $currentTab) {
@@ -27,7 +41,6 @@ struct OwnerView: View {
                     }
                     .tag(OwnerTab.order)
             }
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -39,6 +52,8 @@ struct OwnerView: View {
 
                 }
             })
+            .navigationTitle("Caterify")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
