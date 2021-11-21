@@ -14,9 +14,21 @@ struct OrderView: View {
     var body: some View {
         VStack{
             CustomCateringSegmentedControl(selected: $selected)
-            CateringOrderCard()
+                .padding()
+            ScrollView(){
+                LazyVStack(spacing: 0){
+                    ForEach(1..<10){_ in
+                        CateringOrderCard()
+                            .padding(.horizontal,16)
+                            .padding(.vertical, 8)
+                    }
+                }
+                
+            }
+            .background(Color.ultraLightGrey)
         }
-        .navigationTitle("My Order")
+        //.navigationTitle("My Order")
+        
     }
 }
 
@@ -85,8 +97,42 @@ struct CateringOrderCard: View {
                     .cornerRadius(8)
                     .clipped()
                     .redacted(reason: .placeholder)
+                VStack(alignment: .leading){
+                    Text("Name")
+                    Text("Order Time")
+                        .font(.callout)
+                }
+                Spacer()
+                Text("Status")
+            }
+            HStack{
+                Text("Total order: 200")
+                    .font(.caption)
+                Spacer()
+                Text("Income: ")
+                    .font(.caption)
+                Text("Rp. 200.000")
+                    .font(.caption)
+                    .foregroundColor(Color.main)
+            }
+            Button{
+                //request Pickup
+            } label:{
+                Text("Request Pickup")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(Color.white)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Color.main)
+                    )
             }
         }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 6)
+                .fill(Color.white)
+        )
     }
 }
 

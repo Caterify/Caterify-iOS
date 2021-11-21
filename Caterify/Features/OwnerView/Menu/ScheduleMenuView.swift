@@ -37,11 +37,10 @@ struct ScheduleMenuView: View {
                 
             }
             .padding()
-            .background(Color.ultraLightGrey)
+            .background(Color.white)
             
         }
-        
-        .navigationTitle("My Menu")
+        //.navigationTitle("My Menu")
         
     }
 }
