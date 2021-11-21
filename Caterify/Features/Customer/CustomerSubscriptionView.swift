@@ -13,6 +13,11 @@ enum OrderStatus: Int, CaseIterable  {
     case completed = 2
 }
 
+enum CateringOrderStatus: Int, CaseIterable {
+    case progress = 1
+    case complated = 2
+}
+
 struct CustomerSubscriptionView: View {
     
     @StateObject var viewModel = CustomerSubscriptionViewModel()
@@ -70,12 +75,11 @@ struct CustomerSubscriptionView: View {
 }
 
 struct CustomSegmentedControl: View{
-    
     @Binding var selected: OrderStatus
-    
     let orderStatusName: [String] = ["All", "In Progress", "Completed"]
     
     var body: some View{
+        
         HStack{
             ForEach(OrderStatus.allCases, id:\.rawValue) { status in
                 Button {
@@ -95,6 +99,31 @@ struct CustomSegmentedControl: View{
         }
     }
 }
+
+struct CustomCateringSegmentedControl:View{
+    @Binding var selected: CateringOrderStatus
+    let orderStatusName: [String] = ["All", "In Progress", "Completed"]
+    var body: some View{
+        HStack{
+            ForEach(CateringOrderStatus.allCases, id:\.rawValue) { status in
+                Button {
+                    selected = status
+                } label:{
+                    Text(orderStatusName[status.rawValue])
+                        .font(.subheadline)
+                        .padding(8)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(selected == status ?  Color.main : Color.clear)
+                        )
+                        .foregroundColor(selected == status ? .white : .grey )
+                }
+            }
+        }
+    }
+}
+
 struct OrderCard: View {
     
     let order: Order
@@ -151,8 +180,9 @@ struct OrderCard: View {
     }
 }
 
+
 struct CustomerSubscriptionView_Previews: PreviewProvider {
     static var previews: some View {
-       CustomerSubscriptionView()
+        CustomerSubscriptionView()
     }
 }
