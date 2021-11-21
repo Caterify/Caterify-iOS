@@ -50,7 +50,7 @@ struct LoginView: View {
                     Text("ONLY FOR TESTING")
                         .font(.caption)
                     Button {
-                        viewModel.email = "radika03@example.org"
+                        viewModel.email = "andriani.ira@example.net"
                         viewModel.password = "admin123"
                     } label: {
                         Text("Dummy Customer Account")
@@ -62,7 +62,7 @@ struct LoginView: View {
                     Text("ONLY FOR TESTING")
                         .font(.caption)
                     Button {
-                        viewModel.email = "jasmin22@example.net"
+                        viewModel.email = "tsaragih@example.net"
                         viewModel.password = "admin123"
                     } label: {
                         Text("Dummy Catering Account")

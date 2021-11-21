@@ -16,7 +16,7 @@ struct OrderView: View {
             CustomCateringSegmentedControl(selected: $viewModel.selected)
                 .padding()
             ScrollView(){
-                LazyVStack(spacing: 0){
+                VStack(spacing: 0){
                     if viewModel.selected == .progress {
                         ForEach(viewModel.schedules.filter {
                             if let status = $0.orders?.first?.status {
@@ -24,13 +24,19 @@ struct OrderView: View {
                             } else {
                                 return true
                             }
-                        }.sorted { $0.date!.toDate()! > $1.date!.toDate()! }, id:\.id) { schedule in
+                        }.sorted { $0.date!.toDate()! < $1.date!.toDate()! }, id:\.id) { schedule in
                             CateringOrderCard(schedule, viewModel)
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 8)
                         }
                     } else {
-                        ForEach(viewModel.schedules.filter {$0.orders!.first!.status! == 2}.sorted { $0.date!.toDate()! > $1.date!.toDate()! }, id:\.id) { schedule in
+                        ForEach(viewModel.schedules.filter {
+                            if let status = $0.orders?.first?.status {
+                                return status == 2
+                            } else {
+                                return true
+                            }
+                        }.sorted { $0.date!.toDate()! > $1.date!.toDate()! }, id:\.id) { schedule in
                             CateringOrderCard(schedule, viewModel)
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 8)
@@ -50,59 +56,6 @@ struct OrderView: View {
 }
 
 struct CateringOrderCard: View {
-    
-    //    let order: Order
-    //   let imageURL: URL
-    //
-    //    init(_ order: Order) {
-    //        self.order = order
-    //        let baseUrl = "https://caterify.xyz/images/menus/"
-    //        let imageUrl = order.schedule?.menu?.image ?? ""
-    //        let url = imageUrl.isEmpty ? Constants.Endpoint.placeholderImage : baseUrl + imageUrl
-    //        self.imageURL = URL(string: url) ?? URL(string: Constants.Endpoint.placeholderImage)!
-    //    }
-    //    var body: some View {
-    //        VStack{
-    //            HStack(spacing: 16){
-    //                AsyncImage(url: imageURL) { phase in
-    //                    if let image = phase.image {
-    //                        image
-    //                            .resizable()
-    //                            .scaledToFill()
-    //                            .frame(width: 48, height: 48)
-    //                            .cornerRadius(8)
-    //                            .clipped()
-    //                    } else {
-    //                        Image("Dummy Food")
-    //                            .resizable()
-    //                            .scaledToFill()
-    //                            .frame(width: 48, height: 48)
-    //                            .cornerRadius(8)
-    //                            .clipped()
-    //                            .redacted(reason: .placeholder)
-    //                    }
-    //                }
-    //                VStack(alignment: .leading, spacing: 4){
-    //                    Text(order.schedule!.menu!.name!)
-    //                        .font(.callout)
-    //                        .bold()
-    //                    Text(order.schedule!.date!.toDate()!.toString(withFormat: "dd MMM yyyy"))
-    //                        .font(.caption)
-    //                }
-    //                Spacer()
-    //                VStack {
-    //                    Text(Constants.OrderStatus[order.status!])
-    //                        .font(.caption)
-    //                        .foregroundColor(.main)
-    //                    Text("\(order.schedule!.price!.toRupiah())")
-    //                        .font(.caption)
-    //                        .fontWeight(.bold)
-    //                        .foregroundColor(Color.main)
-    //                }
-    //            }
-    //            .padding(8)
-    //        }
-    //    }
     
     let schedule: Schedule
     let imageURL: URL

@@ -17,6 +17,8 @@ struct OwnerView: View {
     @State  var currentTab: OwnerTab = .menu
     @State var isAddingMenu: Bool = false
     @State var date: Date = Date()
+    @AppStorage("token") var loginToken: String = ""
+    @AppStorage("side") var side: String = ""
     
     init() {
         if #available(iOS 13.0, *) {
@@ -53,7 +55,15 @@ struct OwnerView: View {
                         Image(systemName: "plus")
                             .foregroundColor(Color.main)
                     }
-
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        loginToken = ""
+                        side = "login"
+                    } label: {
+                        Text("Logout")
+                            .foregroundColor(Color.main)
+                    }
                 }
             })
             .navigationTitle("Caterify")
