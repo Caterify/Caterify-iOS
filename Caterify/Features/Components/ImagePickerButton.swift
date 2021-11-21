@@ -14,7 +14,7 @@ struct ImagePickerButton: View {
     var body: some View {
         ZStack {
             Image(uiImage: UIImage(systemName: "photo.on.rectangle.angled")!).renderingMode(.template).foregroundColor(.main)
-                .frame(maxWidth: .infinity, idealHeight: 200)
+                .frame(maxWidth: .infinity, minHeight: 100, idealHeight: 100, maxHeight: 100)
                 .background(.ultraThinMaterial)
                 .cornerRadius(6)
                 .clipped()

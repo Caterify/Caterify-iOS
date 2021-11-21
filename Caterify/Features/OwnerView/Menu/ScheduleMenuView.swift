@@ -10,12 +10,13 @@ import SwiftUI
 struct ScheduleMenuView: View {
     
     @StateObject var viewModel = ScheduleMenuViewModel()
+    @Binding var date: Date
     
     var body: some View {
         ZStack{
             Color.main.edgesIgnoringSafeArea(.top)
             VStack(){
-                DatePicker("Select Date", selection: $viewModel.date, displayedComponents: .date)
+                DatePicker("Select Date", selection: $date, displayedComponents: .date)
                     .datePickerStyle(.graphical)
                     .onChange(of: viewModel.date) { newValue in
                         viewModel.getActiveOrder()
@@ -37,7 +38,7 @@ struct ScheduleMenuView: View {
                 
             }
             .padding()
-            .background(Color.white)
+            .background(Color.background)
             
         }
         //.navigationTitle("My Menu")

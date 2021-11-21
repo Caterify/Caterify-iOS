@@ -16,6 +16,7 @@ struct OwnerView: View {
     @StateObject var viewModel = OwnerViewModel()
     @State  var currentTab: OwnerTab = .menu
     @State var isAddingMenu: Bool = false
+    @State var date: Date = Date()
     
     init() {
         if #available(iOS 13.0, *) {
@@ -33,7 +34,7 @@ struct OwnerView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $currentTab) {
-                ScheduleMenuView()  
+                ScheduleMenuView(date: $date)
                     .tabItem {
                         Label("Menu", systemImage: "house.fill")
                     }
@@ -58,7 +59,7 @@ struct OwnerView: View {
             .navigationTitle("Caterify")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $isAddingMenu) {
-                CreateMenuView(isPresented: $isAddingMenu)
+                CreateMenuView(isPresented: $isAddingMenu, date: $date)
             }
         }
     }

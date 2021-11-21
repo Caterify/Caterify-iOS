@@ -130,6 +130,5 @@ struct CustomForm: View {
                 }
             }
         }
-        
     }
 }

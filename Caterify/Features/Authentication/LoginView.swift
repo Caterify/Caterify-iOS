@@ -80,6 +80,9 @@ struct LoginView: View {
                 .navigationTitle("Login")
                 .navigationBarTitleDisplayMode(.inline)
             }
+            .onTapGesture {
+                isShowingDatePicker.toggle()
+            }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .padding(.horizontal,16)
         }

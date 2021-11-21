@@ -93,6 +93,9 @@ struct RegistrationView: View {
                 
             }
             .padding(.top,16)
+            .onTapGesture {
+                isShowingDatePicker.toggle()
+            }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationTitle("Register")
             .navigationBarTitleDisplayMode(.inline)
@@ -111,7 +114,6 @@ struct RegistrationView: View {
                 AddressPickerView()
             }
         }
-        
     }
 }
 
