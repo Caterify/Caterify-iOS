@@ -37,12 +37,13 @@ final class RegistrationViewModel: ObservableObject {
     @AppStorage("longitude") var longitude: CLLocationDegrees = 0.0
     @AppStorage("addressNotes") var savedAddressNotes: String = ""
     @AppStorage("token") var token: String = ""
+    @AppStorage("side") var side: String = "login"
     
     private let authRequest = AuthRequest()
     private var cancellable = Set<AnyCancellable>()
     
-    func register() {
-        authRequest.register(name: name, email: email, phone: phone, password: password, passwordConfirmation: confirmPassword, role: 1, address: savedAddress, radius: 15000, latitude: latitude, longitude: longitude)
+    func register(selectedRole: Int) {
+        authRequest.register(name: name, email: email, phone: phone, password: password, passwordConfirmation: confirmPassword, role: selectedRole, address: savedAddress, radius: 15000, latitude: latitude, longitude: longitude)
             .receive(on: DispatchQueue.main, options: nil)
             .sink { [weak self] result in
                 switch result {
@@ -73,6 +74,7 @@ final class RegistrationViewModel: ObservableObject {
                 guard let data = responses.data else { return }
                 guard let token = data.token else { return }
                 self?.token = token
+                self?.side = data.user!.role! == 1 ? "owner" : "customer"
                 print("Debug register: \(self?.token)")
             }
             .store(in: &cancellable)

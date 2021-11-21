@@ -25,8 +25,8 @@ struct RegistrationView: View {
                                    errorDescription: .constant(""))
                         CustomForm(placeholder: "e.g. johndoe@email.com", title: "Email", type: .normal, field: $viewModel.email,isError: $viewModel.isErrorEmail,
                                    errorDescription: $viewModel.emailErrorDescription)
-                        CustomForm(placeholder: "*********", title: "Password", type: .secure, field: $viewModel.password,isError: $viewModel.isErrorEmail,
-                                   errorDescription: $viewModel.emailErrorDescription)
+                        CustomForm(placeholder: "*********", title: "Password", type: .secure, field: $viewModel.password,isError: $viewModel.isPasswordError,
+                                   errorDescription: $viewModel.passwordErrorDescription)
                         CustomForm(placeholder: "*********", title: "Confirm Password", type: .secure, field: $viewModel.confirmPassword,isError: .constant(false),
                                    errorDescription: .constant(""))
                         CustomForm(placeholder: "e.g. 081266666666", title: "Phone Number", type: .numeric, field: $viewModel.phone,isError: $viewModel.isErrorPhone,
@@ -67,6 +67,7 @@ struct RegistrationView: View {
                 Group{
                     Button {
                         print("Signed in")
+                        viewModel.register(selectedRole: userRole == .owner ? 1 : 2)
                     } label: {
                         Text("Sign Up")
                             .padding(8)
